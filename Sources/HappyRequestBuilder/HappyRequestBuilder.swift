@@ -105,3 +105,23 @@ class RequestBuilder {
         return request
     }
 }
+
+extension RequestBuilder {
+    
+    @discardableResult
+    func addAuth(token: String) -> RequestBuilder {
+        return set(.header("Authorization", "Bearer \(token)"))
+    }
+    
+    @discardableResult
+    func addCredentials(username: String, password: String) -> RequestBuilder {
+        guard let credentialData = "\(username):\(password)".data(using: .utf8)?.base64EncodedString() else { return self }
+        return set(.header("Authorization", "Basic \(credentialData)"))
+    }
+    
+    @discardableResult
+    func addJsonContentType() -> RequestBuilder {
+        return set(.header("Content-Type", "application/json"))
+    }
+}
+
