@@ -2,9 +2,9 @@
 
 Easily build common API requests in less lines.
 
-##How To Use
+## How To Use
 
-Creating a builder
+### Creating a builder
 ```
 let requestBuilder = RequestBuilder()
                     .set(.host("yourApi.com"))
@@ -15,11 +15,11 @@ let requestBuilder = RequestBuilder()
 ```
 See `RequestParameters` for all options
 
-Build a `URLRequest`:
+### Build a `URLRequest`:
 
 ` let request = requestBuilder.build()`
 
-Set a default builder:
+### Set a default builder:
 
 ```
 requestBuilder.commitDefault()
