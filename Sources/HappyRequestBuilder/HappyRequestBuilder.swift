@@ -33,11 +33,11 @@ open class RequestBuilder {
     var timeout = 20.0
     var cachePolicy = URLRequest.CachePolicy.reloadRevalidatingCacheData
     
-    static var defaultBuild: RequestBuilder = RequestBuilder()
+    public static var defaultBuild: RequestBuilder = RequestBuilder()
     
-    init() {}
+    public init() {}
     
-    init(scheme: String,
+    public init(scheme: String,
          host: String,
          path: String,
          headers: [String: String],
@@ -53,7 +53,7 @@ open class RequestBuilder {
     }
     
     @discardableResult
-    func set(_ params: RequestParameters) -> RequestBuilder {
+    public func set(_ params: RequestParameters) -> RequestBuilder {
         switch params {
         case .scheme(let scheme):
             self.scheme = scheme
@@ -80,7 +80,7 @@ open class RequestBuilder {
         return RequestBuilder(scheme: scheme, host: host, path: path, headers: headers, method: method, items: queryItems, body: body)
     }
     
-    func commitDefault() {
+    public func commitDefault() {
         RequestBuilder.defaultBuild = RequestBuilder(scheme: scheme,
                                                      host: host,
                                                      path: path,
@@ -89,7 +89,7 @@ open class RequestBuilder {
                                                      body: body)
     }
     
-    func build() -> URLRequest? {
+    public func build() -> URLRequest? {
         var components = URLComponents()
         components.host = host
         components.scheme = scheme
