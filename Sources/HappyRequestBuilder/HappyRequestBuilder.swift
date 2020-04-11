@@ -1,6 +1,6 @@
 import Foundation
 
-enum HTTPMethod: String {
+public enum HTTPMethod: String {
     case get = "GET"
     case post = "POST"
     case delete = "DELETE"
@@ -8,7 +8,7 @@ enum HTTPMethod: String {
     case patch = "PATCH"
 }
 
-enum RequestParameters {
+public enum RequestParameters {
     case host(String)
     case scheme(String)
     case pathExtension(String)
@@ -21,7 +21,7 @@ enum RequestParameters {
     case method(HTTPMethod)
 }
 
-class RequestBuilder {
+open class RequestBuilder {
     var scheme = "https"
     var host: String = ""
     var pathExtension = ""
@@ -106,7 +106,7 @@ class RequestBuilder {
     }
 }
 
-extension RequestBuilder {
+public extension RequestBuilder {
     
     @discardableResult
     func addAuth(token: String) -> RequestBuilder {
